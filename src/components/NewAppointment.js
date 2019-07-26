@@ -23,10 +23,8 @@ class NewAppointment extends Component {
                                     name='mascota'
                                     />
                             </div>
-                        </div>
-                    </form>  {/* form-group */}
+                        </div>{/* form-group */}
 
-                    <form action="">
                         <div className="form-group row">
                             <label htmlFor="" className="col-sm-4 col-lg-2 col-form-label">
                                 Nombre Dueño
@@ -39,10 +37,8 @@ class NewAppointment extends Component {
                                     name='propietario'
                                     />
                             </div>
-                        </div>
-                    </form>  {/* form-group */}
+                        </div>{/* form-group */}
 
-                    <form action="">
                         <div className="form-group row">
                             <label htmlFor="" className="col-sm-4 col-lg-2 col-form-label">
                                 Fecha
@@ -54,7 +50,7 @@ class NewAppointment extends Component {
                                     name='fecha'
                                     />
                             </div>
-                            
+
                             <label htmlFor="" className="col-sm-4 col-lg-2 col-form-label">
                                 Hora
                             </label>
@@ -65,8 +61,23 @@ class NewAppointment extends Component {
                                     name='hora'
                                     />
                             </div>
-                        </div>
-                    </form>  {/* form-group */}
+                        </div>{/* form-group */}
+
+                        <div className="form-group row">
+                            <label htmlFor="" className="col-sm-4 col-lg-2 col-form-label">
+                                Síntomas
+                            </label>
+                            <div className="col-sm-8 col-lg-10">
+                                <textarea name="sintomas" className="form-control" placeholder="Describe los síntomas">
+
+                                </textarea>
+                            </div>
+                        </div>{/* form-group */}
+
+                        <input type="submit" className="py-3 mt-2 btn btn-success btn-block" value="Agregar nueva cita"/>
+                    </form>  
+
+                    
                 </div>
             </div>
         );
