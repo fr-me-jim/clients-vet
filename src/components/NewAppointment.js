@@ -1,7 +1,25 @@
 import React, { Component } from 'react';
 
 class NewAppointment extends Component {
-    state = {  }
+    state = { 
+        appointment: {
+            mascota: '',
+            propietario: '',
+            fecha: '',
+            hora: '',
+            sintomas: ''
+        }
+    }
+
+    handleChange = e => {
+        this.setState({
+            appointment: {
+                ...this.state.appointment,
+                [e.target.name]: e.target.value
+            }
+        })
+    }
+
     render() { 
         return ( 
             <div className="card mt-5 py-4">
@@ -21,6 +39,8 @@ class NewAppointment extends Component {
                                     className="form-control"
                                     placeholder='Nombre Mascota'
                                     name='mascota'
+                                    onChange={this.handleChange}
+                                    value={this.state.appointment.mascota}
                                     />
                             </div>
                         </div>{/* form-group */}
@@ -35,6 +55,8 @@ class NewAppointment extends Component {
                                     className="form-control"
                                     placeholder='Nombre Dueño Mascota'
                                     name='propietario'
+                                    onChange={this.handleChange}
+                                    value={this.state.appointment.propietario}
                                     />
                             </div>
                         </div>{/* form-group */}
@@ -48,6 +70,8 @@ class NewAppointment extends Component {
                                     type="date" 
                                     className="form-control"
                                     name='fecha'
+                                    onChange={this.handleChange}
+                                    value={this.state.appointment.fecha}
                                     />
                             </div>
 
@@ -59,6 +83,8 @@ class NewAppointment extends Component {
                                     type="time" 
                                     className="form-control"
                                     name='hora'
+                                    onChange={this.handleChange}
+                                    value={this.state.appointment.hora}
                                     />
                             </div>
                         </div>{/* form-group */}
@@ -68,9 +94,13 @@ class NewAppointment extends Component {
                                 Síntomas
                             </label>
                             <div className="col-sm-8 col-lg-10">
-                                <textarea name="sintomas" className="form-control" placeholder="Describe los síntomas">
-
-                                </textarea>
+                                <textarea 
+                                    name="sintomas" 
+                                    className="form-control" 
+                                    placeholder="Describe los síntomas"
+                                    onChange={this.handleChange}
+                                    value={this.state.appointment.sintomas}
+                                ></textarea>
                             </div>
                         </div>{/* form-group */}
 
