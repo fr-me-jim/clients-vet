@@ -54,7 +54,9 @@ class App extends Component {
         <Header title='Administrador Pacientes Veterinaria' />
         <div className="row">
           <div className="col-md-12 mx-auto">
-            <NewAppointment createNewAppointment={this.createNewAppointment} />
+            <NewAppointment 
+              createNewAppointment={this.createNewAppointment} 
+            />
             
           </div>
 

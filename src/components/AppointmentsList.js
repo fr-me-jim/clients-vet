@@ -1,6 +1,6 @@
 import React from 'react';
 import Appointment from './Appointment';
-import { Certificate } from 'crypto';
+import PropTypes from 'prop-types';
 
 
 const AppointmentsList = ({appointments, deleteAppointment}) => ( 
@@ -22,5 +22,10 @@ const AppointmentsList = ({appointments, deleteAppointment}) => (
 
     </div> 
 );
+
+AppointmentsList.propTypes = {
+    appointments: PropTypes.array.isRequired,
+    deleteAppointment: PropTypes.func.isRequired
+}
  
 export default AppointmentsList;
