@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './bootstrap.min.css'
 import Header from './components/Header';
 import NewAppointment from './components/NewAppointment';
+import AppointmentsList from './components/AppointmentsList';
 
 class App extends Component {
   state = { 
@@ -16,6 +17,21 @@ class App extends Component {
     })
   }
 
+  deleteAppointment = id => {
+    
+    //copiar state de citas actual
+    const currentAppointments = [...this.state.appointments];
+
+    //filtrar por el elemento @id
+    const appointments = currentAppointments.filter(appointment => appointment.id !== id);
+
+    //actualizar state
+    this.setState({
+      appointments
+    })
+
+  }
+
   render() { 
     return (
       <div className="container">
@@ -23,6 +39,15 @@ class App extends Component {
         <div className="row">
           <div className="col-md-12 mx-auto">
             <NewAppointment createNewAppointment={this.createNewAppointment} />
+            
+          </div>
+
+          <div className="mt-5 col-md-12 mx-auto">
+            <AppointmentsList 
+              appointments={this.state.appointments} 
+              deleteAppointment={this.deleteAppointment}
+            />
+
           </div>
         </div>
       </div>
