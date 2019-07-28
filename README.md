@@ -1,4 +1,4 @@
 ##Descripción
 
-Web para crear tickets a una veterinaria para una consulta, con React.
+Web para crear tickets a una veterinaria para una consulta, hecha con React: class components & stateless functionals components .
 
