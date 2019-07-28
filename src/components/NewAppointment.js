@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
+import uuid from 'uuid';
+
+const initialState = {
+    appointment: {
+        mascota: '',
+        propietario: '',
+        fecha: '',
+        hora: '',
+        sintomas: ''
+    },
+    error: false
+}
 
 class NewAppointment extends Component {
-    state = { 
-        appointment: {
-            mascota: '',
-            propietario: '',
-            fecha: '',
-            hora: '',
-            sintomas: ''
-        }
-    }
+    state = { ...initialState }
 
+    //cuando el usuario llena el form
     handleChange = e => {
+        //update state segun el input
         this.setState({
             appointment: {
                 ...this.state.appointment,
@@ -20,7 +26,36 @@ class NewAppointment extends Component {
         })
     }
 
+    //cuando se envia el form
+    handleSubmit = e => {
+        e.preventDefault();
+
+        //extraer valores del state
+        const {mascota, propietario, fecha, hora, sintomas} = this.state.appointment;
+
+        //validar que todos los campos esten rellenados
+        if(mascota === '' | propietario==='' | fecha==='' | hora==='' | sintomas==='') {
+            this.setState({
+                error: true
+            });
+            return;
+        }
+        //generar objeto con los datos
+        const newAppointment = this.state.appointment;
+        newAppointment.id = uuid();
+        
+        //agregar cita al state de App
+        this.props.createNewAppointment(newAppointment);
+
+        //reiniciar state
+        this.setState({
+            ...initialState
+        })
+    }
+
     render() { 
+        const {error} = this.state;
+
         return ( 
             <div className="card mt-5 py-4">
                 <div className="card-body">
@@ -28,7 +63,9 @@ class NewAppointment extends Component {
                         Llena el formulario para crear una nueva cita
                     </h3>
                     
-                    <form action="">
+                    {error ? <div className="alert alert-danger mt-2 mb-5 text-center"> Todos los campos son obligatórios!</div> : null}
+
+                    <form action="" onSubmit={this.handleSubmit} >
                         <div className="form-group row">
                             <label htmlFor="" className="col-sm-4 col-lg-2 col-form-label">
                                 Nombre Mascota
