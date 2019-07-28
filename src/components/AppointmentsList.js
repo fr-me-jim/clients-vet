@@ -3,25 +3,30 @@ import Appointment from './Appointment';
 import PropTypes from 'prop-types';
 
 
-const AppointmentsList = ({appointments, deleteAppointment}) => ( 
-    <div className="card mt-2 py-5">
-        <div className="card-body">
-            <h4 className="card-title text-center">Administra tus citas aquí</h4>
-
-            <div className="lista-citas">
-                {appointments.map(appointment => (
-                    <Appointment 
-                        key={appointment.id}
-                        appointment={appointment}
-                        deleteAppointment={deleteAppointment}
-                    />
-                ))}
-
+const AppointmentsList = ({appointments, deleteAppointment}) => {
+    
+    const message = Object.keys(appointments).length === 0 ? 'No hay citas.' : 'Administra tus citas aquí'
+    
+    return ( 
+        <div className="card mt-2 py-5">
+            <div className="card-body">
+                <h4 className="card-title text-center">{message}</h4>
+    
+                <div className="lista-citas">
+                    {appointments.map(appointment => (
+                        <Appointment 
+                            key={appointment.id}
+                            appointment={appointment}
+                            deleteAppointment={deleteAppointment}
+                        />
+                    ))}
+    
+                </div>
             </div>
-        </div>
-
-    </div> 
-);
+    
+        </div> 
+    );
+}
 
 AppointmentsList.propTypes = {
     appointments: PropTypes.array.isRequired,
