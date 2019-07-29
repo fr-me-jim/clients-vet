@@ -61,7 +61,7 @@ class NewAppointment extends Component {
             <div className="card mt-5 py-4">
                 <div className="card-body">
                     <h3 className="card-title text-center mb-5">
-                        Llena el formulario para crear una nueva cita
+                        Fill the form to create a new appointment
                     </h3>
                     
                     {error ? <div className="alert alert-danger mt-2 mb-5 text-center"> All fields are mandatory!</div> : null}
