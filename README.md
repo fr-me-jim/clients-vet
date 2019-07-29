@@ -1,12 +1,16 @@
-# Pacientes-Veterinaria
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Descripción
+# Clients-Vet
 
-Web para crear tickets a una veterinaria para una consulta, hecha con React: class components & stateless functionals components.
+## Description
 
-Objetivo: practica de React.
+Web for creating consultation tickets to a Veterinarian, made with React: class components & stateless functionals components.
+
+### Aim 
+
+Learning && Portfolio purpouses.
 
 
-### Donde ver
+### Deployment link
 
-URL para ver la web : [WEB](https://optimistic-edison-b0cdf2.netlify.com)
+Aviable at [Clients-Vet](https://optimistic-edison-b0cdf2.netlify.com)

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const AppointmentsList = ({appointments, deleteAppointment}) => {
     
-    const message = Object.keys(appointments).length === 0 ? 'No hay citas.' : 'Administra tus citas aquí'
+    const message = Object.keys(appointments).length === 0 ? 'No consultations.' : 'Manage your tickets here'
     
     return ( 
         <div className="card mt-2 py-5">

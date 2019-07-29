@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 const Appointment = ({appointment, deleteAppointment}) => ( 
     <div className="media mt-3">
         <div className="media-body">
-            <h5 className="mt-0">{appointment.mascota}</h5>
-            <p className="card-text"><span>Nombre Dueño: </span> {appointment.propietario} </p>
-            <p className="card-text"><span>Fecha: </span> {appointment.fecha} </p>
-            <p className="card-text"><span>Hora: </span> {appointment.hora} </p>
-            <p className="card-text"><span>Síntomas: </span> </p>
-            <p className="card-text"> {appointment.sintomas} </p>
+            <h5 className="mt-0">{appointment.pet}</h5>
+            <p className="card-text"><span>Owner's Name: </span> {appointment.owner} </p>
+            <p className="card-text"><span>Date: </span> {appointment.date} </p>
+            <p className="card-text"><span>Hour: </span> {appointment.hour} </p>
+            <p className="card-text"><span>Symptoms: </span> </p>
+            <p className="card-text"> {appointment.symptoms} </p>
 
             <button 
                 className="btn btn-danger"
                 onClick={() => deleteAppointment(appointment.id)}
-            > Borrar &times; </button>
+            > Delete &times; </button>
         </div>
     </div>
 );

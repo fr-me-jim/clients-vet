@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 
 const initialState = {
     appointment: {
-        mascota: '',
-        propietario: '',
-        fecha: '',
-        hora: '',
-        sintomas: ''
+        pet: '',
+        owner: '',
+        date: '',
+        hour: '',
+        symptoms: ''
     },
     error: false
 }
@@ -16,9 +16,9 @@ const initialState = {
 class NewAppointment extends Component {
     state = { ...initialState }
 
-    //cuando el usuario llena el form
+    //when user fills the form
     handleChange = e => {
-        //update state segun el input
+        //update state by input
         this.setState({
             appointment: {
                 ...this.state.appointment,
@@ -27,28 +27,28 @@ class NewAppointment extends Component {
         })
     }
 
-    //cuando se envia el form
+    //when form submitted
     handleSubmit = e => {
         e.preventDefault();
 
-        //extraer valores del state
-        const {mascota, propietario, fecha, hora, sintomas} = this.state.appointment;
+        //get values from state
+        const {pet, owner, date, hour, symptoms} = this.state.appointment;
 
-        //validar que todos los campos esten rellenados
-        if(mascota === '' | propietario==='' | fecha==='' | hora==='' | sintomas==='') {
+        //check that all fields are filled
+        if(pet === '' | owner==='' | date==='' | hour==='' | symptoms==='') {
             this.setState({
                 error: true
             });
             return;
         }
-        //generar objeto con los datos
+        //create object with the data
         const newAppointment = this.state.appointment;
         newAppointment.id = uuid();
         
-        //agregar cita al state de App
+        //add appointment to App's state
         this.props.createNewAppointment(newAppointment);
 
-        //reiniciar state
+        //reload state
         this.setState({
             ...initialState
         })
@@ -64,85 +64,85 @@ class NewAppointment extends Component {
                         Llena el formulario para crear una nueva cita
                     </h3>
                     
-                    {error ? <div className="alert alert-danger mt-2 mb-5 text-center"> Todos los campos son obligatórios!</div> : null}
+                    {error ? <div className="alert alert-danger mt-2 mb-5 text-center"> All fields are mandatory!</div> : null}
 
                     <form action="" onSubmit={this.handleSubmit} >
                         <div className="form-group row">
                             <label htmlFor="" className="col-sm-4 col-lg-2 col-form-label">
-                                Nombre Mascota
+                                Pet's Name
                             </label>
                             <div className="col-sm-8 col-lg-10">
                                 <input 
                                     type="text" 
                                     className="form-control"
-                                    placeholder='Nombre Mascota'
-                                    name='mascota'
+                                    placeholder="Pet's Name"
+                                    name='pet'
                                     onChange={this.handleChange}
-                                    value={this.state.appointment.mascota}
+                                    value={this.state.appointment.pet}
                                     />
                             </div>
                         </div>{/* form-group */}
 
                         <div className="form-group row">
                             <label htmlFor="" className="col-sm-4 col-lg-2 col-form-label">
-                                Nombre Dueño
+                                Owner's Name
                             </label>
                             <div className="col-sm-8 col-lg-10">
                                 <input 
                                     type="text" 
                                     className="form-control"
-                                    placeholder='Nombre Dueño Mascota'
-                                    name='propietario'
+                                    placeholder="Owner's name"
+                                    name='owner'
                                     onChange={this.handleChange}
-                                    value={this.state.appointment.propietario}
+                                    value={this.state.appointment.owner}
                                     />
                             </div>
                         </div>{/* form-group */}
 
                         <div className="form-group row">
                             <label htmlFor="" className="col-sm-4 col-lg-2 col-form-label">
-                                Fecha
+                                Date
                             </label>
                             <div className="col-sm-8 col-lg-4">
                                 <input 
                                     type="date" 
                                     className="form-control"
-                                    name='fecha'
+                                    name='date'
                                     onChange={this.handleChange}
-                                    value={this.state.appointment.fecha}
+                                    value={this.state.appointment.date}
                                     />
                             </div>
 
                             <label htmlFor="" className="col-sm-4 col-lg-2 col-form-label">
-                                Hora
+                                Hour
                             </label>
                             <div className="col-sm-8 col-lg-4">
                                 <input 
                                     type="time" 
                                     className="form-control"
-                                    name='hora'
+                                    name='hour'
                                     onChange={this.handleChange}
-                                    value={this.state.appointment.hora}
+                                    value={this.state.appointment.hour}
                                     />
                             </div>
                         </div>{/* form-group */}
 
                         <div className="form-group row">
                             <label htmlFor="" className="col-sm-4 col-lg-2 col-form-label">
-                                Síntomas
+                                Symptoms
                             </label>
                             <div className="col-sm-8 col-lg-10">
                                 <textarea 
-                                    name="sintomas" 
+                                    name="symptoms" 
                                     className="form-control" 
-                                    placeholder="Describe los síntomas"
+                                    placeholder="Describe symptoms"
                                     onChange={this.handleChange}
-                                    value={this.state.appointment.sintomas}
+                                    value={this.state.appointment.symptoms}
                                 ></textarea>
                             </div>
                         </div>{/* form-group */}
 
-                        <input type="submit" className="py-3 mt-2 btn btn-success btn-block" value="Agregar nueva cita"/>
+                        <input type="submit" className="py-3 mt-2 btn btn-success btn-block" value="Add new appointment."/>
                     </form>  
 
                     
